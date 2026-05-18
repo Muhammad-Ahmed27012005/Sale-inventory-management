@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | Smart Sales & Inventory</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand-lockup">
+                <div class="brand-mark">SI</div>
+                <div>
+                    <h2>Smart Sales</h2><span>Inventory Suite</span>
+                </div>
+            </div>
+            <nav class="nav-list">
+                <a class="nav-link" href="/dashboard"><i data-lucide="layout-dashboard"></i>Dashboard</a>
+                <a class="nav-link" href="/products"><i data-lucide="boxes"></i>Products</a>
+                <a class="nav-link" href="/inventory"><i data-lucide="warehouse"></i>Inventory</a>
+                <a class="nav-link" href="/sales"><i data-lucide="receipt"></i>Sales</a>
+                <a class="nav-link" href="/customers"><i data-lucide="users"></i>Customers</a>
+                <a class="nav-link" href="/reports"><i data-lucide="chart-column"></i>Reports</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-pill" data-username></div><button class="btn btn-ghost" type="button" data-logout><i
+                        data-lucide="log-out"></i>Logout</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="page-header">
+                <div>
+                    <h1>Reports</h1>
+                    <p>Daily sales, monthly revenue, and best-selling products.</p>
+                </div>
+                <button id="exportReport" class="btn btn-primary" type="button"><i data-lucide="download"></i>Export
+                    CSV</button>
+            </header>
+
+            <section class="grid stats-grid">
+                <article class="card">
+                    <div class="section-title">
+                        <h2>Daily Sales</h2>
+                    </div>
+                    <div class="field">
+                        <label for="dailyDate">Date</label>
+                        <input id="dailyDate" type="date">
+                    </div>
+                    <div class="total-strip" style="margin-top: 14px;"><span id="dailySalesCount">0 sales</span><strong
+                            id="dailyRevenue">$0.00</strong></div>
+                </article>
+                <article class="card">
+                    <div class="section-title">
+                        <h2>Monthly Sales</h2>
+                    </div>
+                    <div class="field">
+                        <label for="monthlyDate">Month</label>
+                        <input id="monthlyDate" type="month">
+                    </div>
+                    <div class="total-strip" style="margin-top: 14px;"><span id="monthlySalesCount">0
+                            sales</span><strong id="monthlyRevenue">$0.00</strong></div>
+                </article>
+                <article class="card" style="grid-column: span 2;">
+                    <div class="section-title">
+                        <h2>Revenue Analytics</h2>
+                        <button id="refreshReports" class="btn btn-secondary" type="button"><i
+                                data-lucide="refresh-cw"></i>Refresh</button>
+                    </div>
+                    <canvas id="reportsChart" height="86"></canvas>
+                </article>
+            </section>
+
+            <section class="card" style="margin-top: 16px;">
+                <div class="section-title">
+                    <h2>Best Selling Products</h2>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Product</th>
+                                <th>Quantity Sold</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topProductsTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/reports.js"></script>
+</body>
+
+</html>

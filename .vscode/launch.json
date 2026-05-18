@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "SalesInventoryManagementApplication",
+            "request": "launch",
+            "mainClass": "com.inventory.inventory.SalesInventoryManagementApplication",
+            "projectName": "inventory"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-InventoryApplication<inventory>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.inventory.inventory.InventoryApplication",
+            "projectName": "inventory",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

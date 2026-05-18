@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales | Smart Sales & Inventory</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand-lockup">
+                <div class="brand-mark">SI</div>
+                <div>
+                    <h2>Smart Sales</h2><span>Inventory Suite</span>
+                </div>
+            </div>
+            <nav class="nav-list">
+                <a class="nav-link" href="/dashboard"><i data-lucide="layout-dashboard"></i>Dashboard</a>
+                <a class="nav-link" href="/products"><i data-lucide="boxes"></i>Products</a>
+                <a class="nav-link" href="/inventory"><i data-lucide="warehouse"></i>Inventory</a>
+                <a class="nav-link" href="/sales"><i data-lucide="receipt"></i>Sales</a>
+                <a class="nav-link" href="/customers"><i data-lucide="users"></i>Customers</a>
+                <a class="nav-link" href="/reports"><i data-lucide="chart-column"></i>Reports</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-pill" data-username></div><button class="btn btn-ghost" type="button" data-logout><i
+                        data-lucide="log-out"></i>Logout</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="page-header">
+                <div>
+                    <h1>Sales</h1>
+                    <p>Create invoices, process billing, and review transactions.</p>
+                </div>
+                <button id="reloadSales" class="btn btn-secondary" type="button"><i
+                        data-lucide="refresh-cw"></i>Reload</button>
+            </header>
+
+            <section class="grid two-column">
+                <article class="card">
+                    <div class="section-title">
+                        <h2>Billing System</h2>
+                    </div>
+                    <form id="cartForm" class="form-grid">
+                        <div class="field full">
+                            <label for="customerName">Customer Name</label>
+                            <input id="customerName" type="text" required>
+                        </div>
+                        <div class="field">
+                            <label for="saleProduct">Product</label>
+                            <select id="saleProduct" required></select>
+                        </div>
+                        <div class="field">
+                            <label for="saleQuantity">Quantity</label>
+                            <input id="saleQuantity" type="number" min="1" step="1" value="1" required>
+                        </div>
+                        <div class="field full">
+                            <button class="btn btn-secondary" type="submit"><i data-lucide="plus"></i>Add To
+                                Cart</button>
+                        </div>
+                    </form>
+
+                    <div class="table-wrap" style="margin-top: 16px;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cartTableBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="total-strip" style="margin-top: 16px;">
+                        <span>Invoice Total</span>
+                        <strong id="cartTotal">$0.00</strong>
+                    </div>
+                    <button id="generateInvoice" class="btn btn-primary" type="button"
+                        style="width: 100%; margin-top: 16px;">
+                        <i data-lucide="receipt-text"></i>
+                        Generate Invoice
+                    </button>
+                </article>
+
+                <article class="card">
+                    <div class="section-title">
+                        <h2>Sales Records</h2>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Invoice</th>
+                                    <th>Customer</th>
+                                    <th>Total</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="salesTableBody"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <div id="invoiceModal" class="modal-backdrop">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Invoice</h2>
+                <button class="btn btn-secondary btn-icon" type="button" data-modal-close="invoiceModal"
+                    aria-label="Close"><i data-lucide="x"></i></button>
+            </div>
+            <div id="invoiceBody" class="modal-body invoice-box"></div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-modal-close="invoiceModal"><i
+                        data-lucide="check"></i>Done</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/sales.js"></script>
+</body>
+
+</html>

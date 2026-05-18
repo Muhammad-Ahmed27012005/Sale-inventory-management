@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Smart Sales & Inventory</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand-lockup">
+                <div class="brand-mark">SI</div>
+                <div>
+                    <h2>Smart Sales</h2><span>Inventory Suite</span>
+                </div>
+            </div>
+            <nav class="nav-list">
+                <a class="nav-link" href="/dashboard"><i data-lucide="layout-dashboard"></i>Dashboard</a>
+                <a class="nav-link" href="/products"><i data-lucide="boxes"></i>Products</a>
+                <a class="nav-link" href="/inventory"><i data-lucide="warehouse"></i>Inventory</a>
+                <a class="nav-link" href="/sales"><i data-lucide="receipt"></i>Sales</a>
+                <a class="nav-link" href="/customers"><i data-lucide="users"></i>Customers</a>
+                <a class="nav-link" href="/reports"><i data-lucide="chart-column"></i>Reports</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-pill" data-username></div><button class="btn btn-ghost" type="button" data-logout><i
+                        data-lucide="log-out"></i>Logout</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="page-header">
+                <div>
+                    <h1>Products</h1>
+                    <p>Manage catalog items, prices, categories, and quantities.</p>
+                </div>
+                <div class="toolbar">
+                    <button id="undoDeleteButton" class="btn btn-secondary" type="button"><i
+                            data-lucide="rotate-ccw"></i>Undo Delete</button>
+                    <button id="openProductModal" class="btn btn-primary" type="button"><i data-lucide="plus"></i>Add
+                        Product</button>
+                </div>
+            </header>
+
+            <section class="card">
+                <div class="section-title">
+                    <h2>Product Catalog</h2>
+                    <input id="productSearch" class="search-input" type="search"
+                        placeholder="Search products or categories">
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="productModal" class="modal-backdrop">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="productModalTitle">Add Product</h2>
+                <button class="btn btn-secondary btn-icon" type="button" data-modal-close="productModal"
+                    aria-label="Close"><i data-lucide="x"></i></button>
+            </div>
+            <form id="productForm">
+                <div class="modal-body form-grid">
+                    <input id="productId" type="hidden">
+                    <div class="field full">
+                        <label for="productName">Product Name</label>
+                        <input id="productName" type="text" required>
+                    </div>
+                    <div class="field">
+                        <label for="productCategory">Category</label>
+                        <input id="productCategory" type="text" required>
+                    </div>
+                    <div class="field">
+                        <label for="productPrice">Price</label>
+                        <input id="productPrice" type="number" min="0.01" step="0.01" required>
+                    </div>
+                    <div class="field">
+                        <label for="productQuantity">Quantity</label>
+                        <input id="productQuantity" type="number" min="0" step="1" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-modal-close="productModal">Cancel</button>
+                    <button id="saveProductButton" class="btn btn-primary" type="submit"><i data-lucide="save"></i>Save
+                        Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/products.js"></script>
+</body>
+
+</html>
