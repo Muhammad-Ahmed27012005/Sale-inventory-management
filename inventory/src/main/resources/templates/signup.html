@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Smart Sales & Inventory</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="auth-page">
+<main class="auth-card">
+    <div class="brand-lockup">
+        <div class="brand-mark">SI</div>
+        <div>
+            <h1>Create Account</h1>
+            <span>Smart Sales &amp; Inventory</span>
+        </div>
+    </div>
+
+    <form id="signupForm" class="grid" novalidate>
+        <div class="field">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" autocomplete="username" minlength="3" required>
+        </div>
+        <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="new-password" minlength="6" required>
+        </div>
+        <div class="field">
+            <label for="confirmPassword">Confirm Password</label>
+            <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" minlength="6" required>
+        </div>
+        <button id="signupButton" class="btn btn-primary" type="submit">
+            <i data-lucide="user-plus"></i>
+            <span>Sign Up</span>
+        </button>
+        <a class="btn btn-secondary" href="/">
+            <i data-lucide="log-in"></i>
+            <span>Back To Login</span>
+        </a>
+        <p id="signupMessage" class="muted" role="alert"></p>
+    </form>
+</main>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="/js/api.js"></script>
+<script src="/js/ui.js"></script>
+<script src="/js/signup.js"></script>
+</body>
+</html>

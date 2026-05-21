@@ -4,13 +4,12 @@ import java.math.BigDecimal;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 @AllArgsConstructor
 @Builder
 public class DashboardStatsDto {
-
     private long totalProducts;
     private long totalSales;
     private long totalCustomers;

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Smart Sales & Inventory</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand-lockup">
+                <div class="brand-mark">SI</div>
+                <div>
+                    <h2>Smart Sales</h2>
+                    <span>Inventory Suite</span>
+                </div>
+            </div>
+            <nav class="nav-list">
+                <a class="nav-link" href="/dashboard"><i data-lucide="layout-dashboard"></i>Dashboard</a>
+                <a class="nav-link" href="/products"><i data-lucide="boxes"></i>Products</a>
+                <a class="nav-link" href="/inventory"><i data-lucide="warehouse"></i>Inventory</a>
+                <a class="nav-link" href="/sales"><i data-lucide="receipt"></i>Sales</a>
+                <a class="nav-link" href="/customers"><i data-lucide="users"></i>Customers</a>
+                <a class="nav-link" href="/reports"><i data-lucide="chart-column"></i>Reports</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-pill" data-username></div>
+                <button class="btn btn-ghost" type="button" data-logout><i data-lucide="log-out"></i>Logout</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="page-header">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Welcome to your business command center</p>
+                </div>
+                <button id="refreshDashboard" class="btn btn-secondary" type="button">
+                    <i data-lucide="refresh-cw"></i>Refresh
+                </button>
+            </header>
+
+            <section class="grid stats-grid">
+                <article class="card stat-card">
+                    <div>
+                        <p>Total Products</p>
+                        <strong id="totalProducts">0</strong>
+                    </div>
+                    <div class="stat-icon"><i data-lucide="package"></i></div>
+                </article>
+                <article class="card stat-card">
+                    <div>
+                        <p>Total Sales</p>
+                        <strong id="totalSales">0</strong>
+                    </div>
+                    <div class="stat-icon"><i data-lucide="shopping-cart"></i></div>
+                </article>
+                <article class="card stat-card">
+                    <div>
+                        <p>Total Customers</p>
+                        <strong id="totalCustomers">0</strong>
+                    </div>
+                    <div class="stat-icon"><i data-lucide="users"></i></div>
+                </article>
+                <article class="card stat-card">
+                    <div>
+                        <p>Low Stock Items</p>
+                        <strong id="lowStockCount">0</strong>
+                    </div>
+                    <div class="stat-icon"><i data-lucide="alert-triangle"></i></div>
+                </article>
+            </section>
+
+            <section class="grid two-column">
+                <article class="card">
+                    <div class="section-title">
+                        <h2>Revenue Trend (Last 7 Days)</h2>
+                    </div>
+                    <canvas id="revenueChart" height="200"></canvas>
+                </article>
+                <article class="card">
+                    <div class="section-title">
+                        <h2>Recent Transactions</h2>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr><th>Invoice</th><th>Customer</th><th>Amount</th><th>Date</th></tr>
+                            </thead>
+                            <tbody id="recentTransactions"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

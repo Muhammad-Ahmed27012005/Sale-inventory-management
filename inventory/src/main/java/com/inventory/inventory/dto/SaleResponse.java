@@ -5,13 +5,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 @AllArgsConstructor
 @Builder
 public class SaleResponse {
-
     private Long saleId;
     private String customerName;
     private BigDecimal totalAmount;

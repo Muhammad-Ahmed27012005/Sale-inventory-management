@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -30,13 +29,14 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/index", "/login", "/dashboard", "/products", "/inventory",
-                                "/sales", "/customers", "/reports", "/css/**", "/js/**", "/images/**",
-                                "/api/auth/**")
+                        .requestMatchers("/", "/index", "/signup", "/login", "/css/**", "/js/**", "/images/**")
                         .permitAll()
+                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/dashboard", "/products", "/inventory", "/sales", "/customers", "/reports")
+                        .permitAll() // Frontend handles auth
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().permitAll())
-                .httpBasic(Customizer.withDefaults())
+                .httpBasic(org.springframework.security.config.Customizer.withDefaults())
                 .formLogin(AbstractHttpConfigurer::disable)
                 .build();
     }

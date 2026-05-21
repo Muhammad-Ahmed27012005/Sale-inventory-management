@@ -1,16 +1,9 @@
 package com.inventory.inventory.util;
 
-
 import com.inventory.inventory.dto.SaleItemRequest;
 import com.inventory.inventory.entity.Product;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Stack;
 import org.springframework.stereotype.Component;
+import java.util.*;
 
 @Component
 public class DsaUtil {
@@ -34,14 +27,12 @@ public class DsaUtil {
             int mid = low + (high - low) / 2;
             String value = sortedProducts.get(mid).getName().toLowerCase();
             int comparison = value.compareTo(target);
-            if (comparison == 0) {
+            if (comparison == 0)
                 return mid;
-            }
-            if (comparison < 0) {
+            if (comparison < 0)
                 low = mid + 1;
-            } else {
+            else
                 high = mid - 1;
-            }
         }
         return -1;
     }
@@ -60,9 +51,7 @@ public class DsaUtil {
 
     private List<Product> merge(List<Product> left, List<Product> right) {
         List<Product> sorted = new ArrayList<>();
-        int i = 0;
-        int j = 0;
-
+        int i = 0, j = 0;
         while (i < left.size() && j < right.size()) {
             String leftName = left.get(i).getName().toLowerCase();
             String rightName = right.get(j).getName().toLowerCase();
@@ -72,38 +61,10 @@ public class DsaUtil {
                 sorted.add(right.get(j++));
             }
         }
-        while (i < left.size()) {
+        while (i < left.size())
             sorted.add(left.get(i++));
-        }
-        while (j < right.size()) {
+        while (j < right.size())
             sorted.add(right.get(j++));
-        }
         return sorted;
-    }
-
-    public static class UndoDeleteStack {
-
-        private final Stack<Product> deletedProducts = new Stack<>();
-
-        public synchronized void push(Product product) {
-            Product snapshot = Product.builder()
-                    .name(product.getName())
-                    .category(product.getCategory())
-                    .price(product.getPrice())
-                    .quantity(product.getQuantity())
-                    .build();
-            deletedProducts.push(snapshot);
-        }
-
-        public synchronized Product pop() {
-            if (deletedProducts.empty()) {
-                return null;
-            }
-            return deletedProducts.pop();
-        }
-
-        public synchronized boolean hasItems() {
-            return !deletedProducts.empty();
-        }
     }
 }
